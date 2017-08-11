@@ -3,6 +3,9 @@ package com.ytc.agendaafrica.fragments;
 
 import android.annotation.TargetApi;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,17 +14,22 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.squareup.picasso.Picasso;
 import com.ytc.agendaafrica.R;
 import com.ytc.agendaafrica.Services.SyncService;
 import com.ytc.agendaafrica.adapters.GoogleCardsAgendaAdapter;
 import com.ytc.agendaafrica.models.agenda;
+import com.ytc.agendaafrica.util.ExpandableHeightListView;
+import com.ytc.agendaafrica.util.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,7 +40,7 @@ import java.util.List;
  */
 public class agendaFragment extends Fragment {
 
-
+ImageView imageView;
     private GoogleCardsAgendaAdapter mGoogleCardsAdapter;
     List<agenda> prayersdata ;
 
@@ -47,7 +55,13 @@ public class agendaFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_prayer, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.aspirationlist);
+        ExpandableHeightListView listView = (ExpandableHeightListView) view.findViewById(R.id.aspirationlist);
+        imageView= (ImageView) view.findViewById(R.id.imageView);
+
+        imageView.setImageResource(0);
+        Drawable draw = getResources().getDrawable(R.drawable.slider1);
+        draw = resize(draw);
+        imageView.setImageDrawable(draw);
 
         prayersdata = getallchurchList();
 
@@ -70,6 +84,9 @@ public class agendaFragment extends Fragment {
 
 
             listView.setAdapter(mGoogleCardsAdapter);
+//            Utils.setListViewHeightBasedOnItems(listView);
+            listView.setExpanded(true);
+
         }
 
         return view;
@@ -78,7 +95,12 @@ public class agendaFragment extends Fragment {
 
 
 
-
+    private Drawable resize(Drawable image) {
+        Bitmap bitmap = ((BitmapDrawable) image).getBitmap();
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(bitmap,
+                (int) (bitmap.getWidth() * 0.5), (int) (bitmap.getHeight() * 0.5), false);
+        return new BitmapDrawable(getResources(), bitmapResized);
+    }
 
 
 

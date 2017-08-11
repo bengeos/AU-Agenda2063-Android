@@ -1,36 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fillViewport="true">
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" android:background="#ffffff">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical" >
 
 
-        <ImageView
-            android:id="@+id/imageView"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="150dp" />
+            android:layout_height="match_parent" >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000"
-            android:textSize="15dp"
-            android:layout_below="@+id/imageView"
-            android:text="@string/agenda2063"
-            android:id="@+id/intro_content"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/aspirationlist"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/intro_content"/>
-    </RelativeLayout>
-</ScrollView>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/slider1"
+                        app:srcCompat="@drawable/slider1" />
+
+                    <TextView
+                        android:id="@+id/intro_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/imageView"
+
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/agenda2063"
+                        android:textAlignment="center"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#000"
+                        android:textSize="15dp" />
+
+                    <com.ytc.agendaafrica.util.ExpandableHeightListView
+                        android:id="@+id/aspirationlist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cacheColorHint="#00000000"
+                        android:fadingEdge="none"
+                        android:focusable="false"
+                        android:scrollbars="none"
+                        >
+                    </com.ytc.agendaafrica.util.ExpandableHeightListView>
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/View04"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorPrimary" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>
