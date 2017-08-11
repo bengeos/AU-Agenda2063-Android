@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "48863795461",
+    "firebase_url": "https://agendaafrica-370bd.firebaseio.com",
+    "project_id": "agendaafrica-370bd",
+    "storage_bucket": "agendaafrica-370bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48863795461:android:8fdfbbc69fc7e8de",
+        "android_client_info": {
+          "package_name": "com.ytc.agendaafrica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48863795461-43lf7k5vqfje1c753l4p227251rjrj90.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWOU_sYG-INNkCvx_hg1w5kKJLN5IBBlc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
